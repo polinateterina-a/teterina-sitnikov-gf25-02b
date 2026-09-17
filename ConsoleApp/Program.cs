@@ -35,6 +35,7 @@ while (up)
     }
 }
 
+void AddMenu(Logic logic)
 {
     while (true)
     {
