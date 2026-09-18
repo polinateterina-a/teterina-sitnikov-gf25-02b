@@ -35,7 +35,7 @@ namespace BusinessLogic
             direction.Trim();
 
             // проверка на "Два студента в одной группе не могут находиться на разных направлениях"
-            var existingGroup = students.FirstOrDefault(s => s.Group.Equals(group, StringComparison.OrdinalIgnoreCase));
+            var existingGroup = students.FirstOrDefault(s => s.Group.Equals(group, StringComparison.OrdinalIgnoreCase));//вот это сложная фигня, я ее с нейронки слизал не хотел просто иф елзе делать везде
             
             if (existingGroup != null && direction.ToUpper() != existingGroup.Direction.ToUpper())
             {
