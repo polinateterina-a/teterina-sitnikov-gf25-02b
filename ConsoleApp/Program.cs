@@ -73,6 +73,12 @@ void DeleteMenu(Logic logic)
 {
     var list = logic.GetAllStudents();
 
+    if (list.Count == 0)
+    {
+        Console.WriteLine("Список пуст.");
+        return;
+    }
+
     // чтобы табличка красиво выглядела там ниже тоже
     int maxName = list.Max(n => n.FullName.Length);
     int maxGroup = list.Max(n => n.Group.Length);
@@ -114,7 +120,7 @@ void DeleteMenu(Logic logic)
 void ShowHistogram(Logic logic) 
 {
     var dict = logic.Histogram();
-     if (dict.Count == 0)
+    if (dict.Count == 0)
     {
         Console.WriteLine("Нет данных");
         return;
@@ -130,7 +136,13 @@ void ShowHistogram(Logic logic)
 
 void ShowAll(Logic logic)
 {
+
     var students = logic.GetAllStudents();
+    if (students.Count == 0)
+    {
+        Console.WriteLine("Список пуст.");
+        return;
+    }
     int maxName = students.Max(n => n.FullName.Length);
     int maxGroup = students.Max(n => n.Group.Length);
     int maxDirection = students.Max(n => n.Direction.Length);
