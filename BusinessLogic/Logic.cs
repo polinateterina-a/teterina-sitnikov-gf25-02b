@@ -1,6 +1,4 @@
 ﻿using Model;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
 namespace BusinessLogic
 {
@@ -30,9 +28,9 @@ namespace BusinessLogic
                 return false;
             }
 
-            fullName.Trim();
-            group.Trim().ToUpper();
-            direction.Trim();
+            fullName = fullName.Trim();
+            group = group.Trim().ToUpper();
+            direction = direction.Trim();
 
             // проверка на "Два студента в одной группе не могут находиться на разных направлениях"
             var existingGroup = students.FirstOrDefault(s => s.Group.Equals(group, StringComparison.OrdinalIgnoreCase));//вот это сложная фигня, я ее с нейронки слизал не хотел просто иф елзе делать везде
@@ -62,14 +60,15 @@ namespace BusinessLogic
         //        Direction = char.ToUpper(direction[0]) + direction.Substring(1).ToLower()
         //    });
         //}
-        public bool DeleteStudent(Student student)
+        public bool DeleteStudent(int index)
         {
-            if (student == null)
+            if (index < 0 || index >= students.Count)
             {
                 return false;
             }
 
-            return students.Remove(student);
+            students.RemoveAt(index);
+            return true;
         }
 
         public List<Student> GetAllStudents()

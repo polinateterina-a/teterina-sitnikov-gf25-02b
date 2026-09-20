@@ -1,6 +1,4 @@
 ﻿using BusinessLogic;
-using Model;
-using System;
 
 var logic = new Logic();
 bool up = true;
@@ -110,8 +108,7 @@ void DeleteMenu(Logic logic)
 
         break;
     }
-    var stud = list[n - 1];
-    logic.DeleteStudent(stud);
+    logic.DeleteStudent(n - 1);
 }
 
 void ShowHistogram(Logic logic) 
