@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleView", "ConsoleApp\ConsoleView.csproj", "{36B641A6-A4CA-40E2-92D0-39EB463E3AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsView", "WinFormsView\WinFormsView.csproj", "{DE3101D9-E9DB-42F7-B526-69EBC17116E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormView", "WinFormView\WinFormView.csproj", "{D5F09B20-6605-4975-8F38-258E7CF62F19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{36B641A6-A4CA-40E2-92D0-39EB463E3AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36B641A6-A4CA-40E2-92D0-39EB463E3AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36B641A6-A4CA-40E2-92D0-39EB463E3AEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE3101D9-E9DB-42F7-B526-69EBC17116E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE3101D9-E9DB-42F7-B526-69EBC17116E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE3101D9-E9DB-42F7-B526-69EBC17116E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE3101D9-E9DB-42F7-B526-69EBC17116E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -77,7 +77,7 @@ namespace BusinessLogic
         }
         public Dictionary<string, int> Histogram()
         {
-            return students.GroupBy(g => g.Group).ToDictionary(g => g.Key, g => g.Count());
+            return students.GroupBy(g => g.Direction).ToDictionary(g => g.Key, g => g.Count());
         }
 
         // дляя проверки имени на корректность (без цифр и спец символов)
