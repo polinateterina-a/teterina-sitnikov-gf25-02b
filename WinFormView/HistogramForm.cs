@@ -40,6 +40,18 @@ namespace WinFormView
             int x = 20;
             int y = 30;
 
+            float maxTextWidth = 0;
+
+            foreach (var item in histogram)
+            {
+                float width = e.Graphics.MeasureString(item.Key, Font).Width;
+
+                if (width > maxTextWidth)
+                    maxTextWidth = width;
+            }
+
+            float barX = x + maxTextWidth + 20;
+
             foreach (var item in histogram)
             {
                 string group = item.Key;
@@ -56,7 +68,7 @@ namespace WinFormView
 
                 e.Graphics.FillRectangle(
                     Brushes.SteelBlue,
-                    x + 100,
+                    barX,
                     y,
                     barWidth,
                     20);
@@ -65,11 +77,15 @@ namespace WinFormView
                     count.ToString(),
                     Font,
                     Brushes.Black,
-                    x + 110 + barWidth,
+                    barX + barWidth,
                     y);
 
                 y += 40;
             }
+        }
+        private void buttonToStart_Click(object? sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

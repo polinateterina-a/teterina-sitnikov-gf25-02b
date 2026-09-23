@@ -80,28 +80,21 @@ void DeleteMenu(Logic logic)
         return;
     }
 
-    // чтобы табличка красиво выглядела там ниже тоже
     int maxName = list.Max(n => n.Name.Length);
     int maxGroup = list.Max(n => n.Speciality.Length);
     int maxDirection = list.Max(n => n.Group.Length);
 
 
-    if (list.Count == 0)
-    {
-        Console.WriteLine("Список пуст.");
-    }
-
     for (int i = 0; i < list.Count; i++)
     {
         Console.WriteLine($"{i + 1} | {list[i].Name.PadRight(maxName)} | {list[i].Speciality.PadRight(maxGroup)} | {list[i].Group.PadRight(maxDirection)}");
-        // PadRight Это чтобы табличка красиво выглядела, без волн, потом увидишь если табличку выведешь
     }
     int n;
     while (true)
     {
         Console.Write("Введите номер студента: ");
         string input = Console.ReadLine();
-        if (!int.TryParse(input, out n)) // я не придумал способа проще чем ета гавно
+        if (!int.TryParse(input, out n)) 
         {
             Console.WriteLine("Введите число!!!");
             continue;

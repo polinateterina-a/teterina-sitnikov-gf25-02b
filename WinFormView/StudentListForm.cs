@@ -34,5 +34,9 @@ namespace WinFormView
                     student.Group);
             }
         }
+        private void buttonToStart_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace BusinessLogic
     public class Logic
     {
         private readonly List<Student> students = new();
-        public bool AddStudent(string name, string speciality, string group, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
+        public bool AddStudent(string name, string speciality, string group, out string error) 
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -51,16 +51,6 @@ namespace BusinessLogic
             return true;
         }
 
-        // это тож раскомментировать, если надо будет проверять работоспособность логики
-        //public void AddStudent(string fullName, string group, string direction)
-        //{
-        //    students.Add(new Student
-        //    {
-        //        FullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fullName),
-        //        Group = group.ToUpper(),
-        //        Direction = char.ToUpper(direction[0]) + direction.Substring(1).ToLower()
-        //    });
-        //}
         public bool DeleteStudent(int index)
         {
             if (index < 0 || index >= students.Count)

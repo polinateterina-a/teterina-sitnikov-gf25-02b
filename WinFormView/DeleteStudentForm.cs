@@ -71,5 +71,9 @@ namespace WinFormView
                     MessageBoxIcon.Error);
             }
         }
+        private void buttonToStart_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
