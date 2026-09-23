@@ -22,7 +22,7 @@ namespace BusinessLogic
                 error = "Направление не указано";
                 return false;
             }
-            if (!NameValidator(fullName))
+            if (!NameValidator(fullName) || !NameValidator(speciality) || !NameValidator(group))
             {
                 error = "Имя не может содержать цифры и специальные символы\n";
                 return false;

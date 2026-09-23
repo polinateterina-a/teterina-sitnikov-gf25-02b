@@ -38,7 +38,8 @@ while (up)
             ShowHistogram(logic);
             break;
         case "0":
-            up=false; break;
+            up = false;
+            break;
         default:
             Console.WriteLine("Введите число от 0 до 4!!!");
             break;
