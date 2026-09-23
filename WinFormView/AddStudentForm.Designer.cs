@@ -32,9 +32,9 @@
             label2 = new Label();
             textBoxFullName = new TextBox();
             label3 = new Label();
-            textBoxGroup = new TextBox();
+            textBoxSpeciality = new TextBox();
             label4 = new Label();
-            textBoxDirection = new TextBox();
+            textBoxGroup = new TextBox();
             buttonAdd = new Button();
             SuspendLayout();
             // 
@@ -74,10 +74,10 @@
             // 
             // textBoxGroup
             // 
-            textBoxGroup.Location = new Point(90, 246);
-            textBoxGroup.Name = "textBoxGroup";
-            textBoxGroup.Size = new Size(125, 27);
-            textBoxGroup.TabIndex = 4;
+            textBoxSpeciality.Location = new Point(90, 246);
+            textBoxSpeciality.Name = "textBoxGroup";
+            textBoxSpeciality.Size = new Size(125, 27);
+            textBoxSpeciality.TabIndex = 4;
             // 
             // label4
             // 
@@ -90,10 +90,10 @@
             // 
             // textBoxDirection
             // 
-            textBoxDirection.Location = new Point(90, 372);
-            textBoxDirection.Name = "textBoxDirection";
-            textBoxDirection.Size = new Size(125, 27);
-            textBoxDirection.TabIndex = 6;
+            textBoxGroup.Location = new Point(90, 372);
+            textBoxGroup.Name = "textBoxDirection";
+            textBoxGroup.Size = new Size(125, 27);
+            textBoxGroup.TabIndex = 6;
             // 
             // buttonAdd
             // 
@@ -111,9 +111,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(buttonAdd);
-            Controls.Add(textBoxDirection);
-            Controls.Add(label4);
             Controls.Add(textBoxGroup);
+            Controls.Add(label4);
+            Controls.Add(textBoxSpeciality);
             Controls.Add(label3);
             Controls.Add(textBoxFullName);
             Controls.Add(label2);
@@ -130,9 +130,9 @@
         private Label label2;
         private TextBox textBoxFullName;
         private Label label3;
-        private TextBox textBoxGroup;
+        private TextBox textBoxSpeciality;
         private Label label4;
-        private TextBox textBoxDirection;
+        private TextBox textBoxGroup;
         private Button buttonAdd;
     }
 }

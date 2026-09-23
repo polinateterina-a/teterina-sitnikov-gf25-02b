@@ -31,8 +31,8 @@ namespace WinFormView
                 dataGridViewStudents.Rows.Add(
                     i + 1,
                     students[i].FullName,
-                    students[i].Group,
-                    students[i].Direction);
+                    students[i].Speciality,
+                    students[i].Group);
             }
         }
         private void buttonDelete_Click(object sender, EventArgs e)

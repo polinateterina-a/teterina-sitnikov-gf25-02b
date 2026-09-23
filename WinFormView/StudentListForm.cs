@@ -30,8 +30,8 @@ namespace WinFormView
             {
                 dataGridViewStudents.Rows.Add(
                     student.FullName,
-                    student.Group,
-                    student.Direction);
+                    student.Speciality,
+                    student.Group);
             }
         }
     }

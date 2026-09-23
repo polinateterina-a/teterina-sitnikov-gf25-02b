@@ -5,19 +5,19 @@ namespace BusinessLogic
     public class Logic
     {
         private readonly List<Student> students = new();
-        public bool AddStudent(string fullName, string group, string direction, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
+        public bool AddStudent(string fullName, string speciality, string group, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
         {
             if (string.IsNullOrWhiteSpace(fullName))
             {
                 error = "Имя не указано";
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(group))
+            if (string.IsNullOrWhiteSpace(speciality))
             {
                 error = "Группа не указана";
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(direction))
+            if (string.IsNullOrWhiteSpace(group))
             {
                 error = "Направление не указано";
                 return false;
@@ -29,22 +29,22 @@ namespace BusinessLogic
             }
 
             fullName = fullName.Trim();
-            group = group.Trim().ToUpper();
-            direction = direction.Trim();
+            speciality = speciality.Trim().ToUpper();
+            group = group.Trim();
 
             // проверка на "Два студента в одной группе не могут находиться на разных направлениях"
-            var existingGroup = students.FirstOrDefault(s => s.Group.Equals(group, StringComparison.OrdinalIgnoreCase));//вот это сложная фигня, я ее с нейронки слизал не хотел просто иф елзе делать везде
+            var existingGroup = students.FirstOrDefault(s => s.Speciality.Equals(speciality, StringComparison.OrdinalIgnoreCase));//вот это сложная фигня, я ее с нейронки слизал не хотел просто иф елзе делать везде
             
-            if (existingGroup != null && direction.ToUpper() != existingGroup.Direction.ToUpper())
+            if (existingGroup != null && group.ToUpper() != existingGroup.Group.ToUpper())
             {
-                error = $"Группа {group} уже относится к направлению {existingGroup.Direction}";
+                error = $"Группа {speciality} уже относится к направлению {existingGroup.Group}";
                 return false;
             }
             students.Add(new Student
             {
                 FullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fullName), // это чтобы в ФИО все первые буквы были заглавные
-                Group = group.ToUpper(), // все буквы в группе заглавные
-                Direction = char.ToUpper(direction[0]) + direction.Substring(1).ToLower() // в названии направления только первая буква заглавная, а дальше как пользователь введет
+                Speciality = speciality.ToUpper(), // все буквы в группе заглавные
+                Group = char.ToUpper(group[0]) + group.Substring(1).ToLower() // в названии направления только первая буква заглавная, а дальше как пользователь введет
             });
             error = null;
             return true;
@@ -77,7 +77,7 @@ namespace BusinessLogic
         }
         public Dictionary<string, int> Histogram()
         {
-            return students.GroupBy(g => g.Direction).ToDictionary(g => g.Key, g => g.Count());
+            return students.GroupBy(g => g.Group).ToDictionary(g => g.Key, g => g.Count());
         }
 
         // дляя проверки имени на корректность (без цифр и спец символов)

@@ -23,13 +23,13 @@ namespace WinFormView
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             string fullName = textBoxFullName.Text;
+            string speciality = textBoxSpeciality.Text;
             string group = textBoxGroup.Text;
-            string direction = textBoxDirection.Text;
 
             if (logic.AddStudent(
                 fullName,
+                speciality,
                 group,
-                direction,
                 out string error))
             {
                 MessageBox.Show(
@@ -39,8 +39,8 @@ namespace WinFormView
                     MessageBoxIcon.Information);
 
                 textBoxFullName.Clear();
+                textBoxSpeciality.Clear();
                 textBoxGroup.Clear();
-                textBoxDirection.Clear();
             }
             else
             {
