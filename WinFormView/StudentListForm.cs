@@ -29,7 +29,7 @@ namespace WinFormView
             foreach (var student in students)
             {
                 dataGridViewStudents.Rows.Add(
-                    student.FullName,
+                    student.Name,
                     student.Speciality,
                     student.Group);
             }

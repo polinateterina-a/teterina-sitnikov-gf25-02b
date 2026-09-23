@@ -81,7 +81,7 @@ void DeleteMenu(Logic logic)
     }
 
     // чтобы табличка красиво выглядела там ниже тоже
-    int maxName = list.Max(n => n.FullName.Length);
+    int maxName = list.Max(n => n.Name.Length);
     int maxGroup = list.Max(n => n.Speciality.Length);
     int maxDirection = list.Max(n => n.Group.Length);
 
@@ -93,7 +93,7 @@ void DeleteMenu(Logic logic)
 
     for (int i = 0; i < list.Count; i++)
     {
-        Console.WriteLine($"{i + 1} | {list[i].FullName.PadRight(maxName)} | {list[i].Speciality.PadRight(maxGroup)} | {list[i].Group.PadRight(maxDirection)}");
+        Console.WriteLine($"{i + 1} | {list[i].Name.PadRight(maxName)} | {list[i].Speciality.PadRight(maxGroup)} | {list[i].Group.PadRight(maxDirection)}");
         // PadRight Это чтобы табличка красиво выглядела, без волн, потом увидишь если табличку выведешь
     }
     int n;
@@ -144,12 +144,12 @@ void ShowAll(Logic logic)
         Console.WriteLine("Список пуст.");
         return;
     }
-    int maxName = students.Max(n => n.FullName.Length);
+    int maxName = students.Max(n => n.Name.Length);
     int maxGroup = students.Max(n => n.Speciality.Length);
     int maxDirection = students.Max(n => n.Group.Length);
     foreach (var st in students )
     {
-        Console.WriteLine($"| {st.FullName.PadRight(maxName)} | {st.Speciality.PadRight(maxGroup)} | {st.Group.PadRight(maxDirection)}|");
+        Console.WriteLine($"| {st.Name.PadRight(maxName)} | {st.Speciality.PadRight(maxGroup)} | {st.Group.PadRight(maxDirection)}|");
     } 
 }
     

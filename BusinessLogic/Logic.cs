@@ -5,9 +5,9 @@ namespace BusinessLogic
     public class Logic
     {
         private readonly List<Student> students = new();
-        public bool AddStudent(string fullName, string speciality, string group, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
+        public bool AddStudent(string name, string speciality, string group, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
         {
-            if (string.IsNullOrWhiteSpace(fullName))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 error = "Имя не указано";
                 return false;
@@ -22,13 +22,14 @@ namespace BusinessLogic
                 error = "Направление не указано";
                 return false;
             }
-            if (!NameValidator(fullName) || !NameValidator(speciality) || !NameValidator(group))
+            if (!NameValidator(name))
             {
                 error = "Имя не может содержать цифры и специальные символы\n";
                 return false;
             }
+            
 
-            fullName = fullName.Trim();
+            name = name.Trim();
             speciality = speciality.Trim().ToUpper();
             group = group.Trim();
 
@@ -42,7 +43,7 @@ namespace BusinessLogic
             }
             students.Add(new Student
             {
-                FullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fullName), // это чтобы в ФИО все первые буквы были заглавные
+                Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name), // это чтобы в ФИО все первые буквы были заглавные
                 Speciality = speciality.ToUpper(), // все буквы в группе заглавные
                 Group = char.ToUpper(group[0]) + group.Substring(1).ToLower() // в названии направления только первая буква заглавная, а дальше как пользователь введет
             });

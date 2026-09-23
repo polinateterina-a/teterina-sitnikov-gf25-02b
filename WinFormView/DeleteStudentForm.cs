@@ -30,7 +30,7 @@ namespace WinFormView
             {
                 dataGridViewStudents.Rows.Add(
                     i + 1,
-                    students[i].FullName,
+                    students[i].Name,
                     students[i].Speciality,
                     students[i].Group);
             }
