@@ -91,7 +91,6 @@ namespace BusinessLogic
         // дляя проверки имени на корректность (без цифр и спец символов)
         public bool NameValidator(string name)
         {
-            int spacecnt = 0;
             for (int i = 0; i < name.Length - 1; i++)
             {
                 if (name[i] == ' ' && name[i + 1] == ' ')
@@ -105,14 +104,8 @@ namespace BusinessLogic
                 bool lower = (c >= 'а' && c <= 'я') || c == 'ё';
                 bool space = c == ' ';
                 bool dash = c == '-';
-                if (space)
-                {
-                    spacecnt++;
-                }
-                if (spacecnt >= 3)
-                {
-                    return false;
-                }
+
+
                 if (!upper && !lower && !space && !dash)
                 {
                     return false;

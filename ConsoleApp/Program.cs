@@ -52,12 +52,30 @@ void AddMenu(Logic logic)
     {
         Console.Write("Имя: ");
         string Name = Console.ReadLine();
+        while (!logic.NameValidator(Name))
+        {
+            Console.WriteLine($"Ошибка: Неверный ввод");
+            Console.Write("Введите имя заново: ");
+            Name = Console.ReadLine();
+        }
         Console.Write("Группа: ");
         string Group = Console.ReadLine();
-        Console.Write("Направелние: ");
-        string Discipline = Console.ReadLine();
+        while (!logic.SpecialityValidator(Group))
+        {
+            Console.WriteLine($"Ошибка: Неверный ввод");
+            Console.Write("Введите группу заново: ");
+            Group = Console.ReadLine();
+        }
+        Console.Write("Направление: ");
+        string Speciality = Console.ReadLine();
+        while (!logic.SpecialityValidator(Speciality))
+        {
+            Console.WriteLine($"Ошибка: Неверный ввод");
+            Console.Write("Введите направление заново: ");
+            Speciality = Console.ReadLine();
+        }
 
-        if (logic.AddStudent(Name, Group, Discipline, out string error))
+        if (logic.AddStudent(Name, Group, Speciality, out string error))
         {
             Console.WriteLine("Студент добавлен");
             break;
