@@ -13,7 +13,7 @@
             {
                 if (string.IsNullOrEmpty(_name))
                 {
-                    Name = value;
+                    _name = value;
                 }
             }
         }
@@ -28,7 +28,7 @@
             {
                 if (string.IsNullOrEmpty(_speciality))
                 {
-                    Speciality = value;
+                    _speciality = value;
                 }
             }
         }
@@ -44,7 +44,7 @@
             {
                 if (string.IsNullOrEmpty(_group))
                 {
-                    Group = value;
+                    _group = value;
                 }
             }
         }

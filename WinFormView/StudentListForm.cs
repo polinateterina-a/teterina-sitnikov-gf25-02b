@@ -26,12 +26,12 @@ namespace WinFormView
 
             var students = logic.GetAllStudents();
 
-            foreach (var student in students)
+            foreach (var item in students)
             {
                 dataGridViewStudents.Rows.Add(
-                    student.Name,
-                    student.Speciality,
-                    student.Group);
+                    item.Name,
+                    item.Speciality,
+                    item.Group);
             }
         }
         private void buttonToStart_Click(object sender, EventArgs e)

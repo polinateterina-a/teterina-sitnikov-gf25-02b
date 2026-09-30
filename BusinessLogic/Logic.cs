@@ -1,12 +1,11 @@
 ﻿using Model;
 using System.Globalization;
-using System.Runtime.Intrinsics.X86;
 namespace BusinessLogic
 {
     public class Logic
     {
         private readonly List<Student> students = new();
-        public bool AddStudent(string name, string speciality, string group, out string error) //out string error это, если какое-то условие не соблюдено, выведет в консоли ошибку
+        public bool AddStudent(string name, string speciality, string group, out string error) 
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -34,14 +33,11 @@ namespace BusinessLogic
                 return false;
             }
 
-
-
             name = name.Trim();
             speciality = speciality.Trim().ToUpper();
             group = group.Trim();
-
-            // проверка на "Два студента в одной группе не могут находиться на разных направлениях"
-            var existingGroup = students.FirstOrDefault(s => s.Speciality.Equals(speciality, StringComparison.OrdinalIgnoreCase));//вот это сложная фигня, я ее с нейронки слизал не хотел просто иф елзе делать везде
+            
+            var existingGroup = students.FirstOrDefault(s => s.Speciality.Equals(speciality, StringComparison.OrdinalIgnoreCase));
 
             if (existingGroup != null && group.ToUpper() != existingGroup.Group.ToUpper())
             {
@@ -50,24 +46,14 @@ namespace BusinessLogic
             }
             students.Add(new Student
             {
-                Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()), // это чтобы в ФИО все первые буквы были заглавные
-                Speciality = speciality.ToUpper(), // все буквы в группе заглавные
-                Group = char.ToUpper(group[0]) + group.Substring(1).ToLower() // в названии направления только первая буква заглавная, а дальше как пользователь введет
+                Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()), 
+                Speciality = speciality.ToUpper(), 
+                Group = char.ToUpper(group[0]) + group.Substring(1).ToLower() 
             });
             error = null;
             return true;
         }
 
-        // это тож раскомментировать, если надо будет проверять работоспособность логики
-        //public void AddStudent(string fullName, string group, string direction)
-        //{
-        //    students.Add(new Student
-        //    {
-        //        FullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fullName),
-        //        Group = group.ToUpper(),
-        //        Direction = char.ToUpper(direction[0]) + direction.Substring(1).ToLower()
-        //    });
-        //}
         public bool DeleteStudent(int index)
         {
             if (index < 0 || index >= students.Count)
@@ -79,16 +65,16 @@ namespace BusinessLogic
             return true;
         }
 
-        public List<Student> GetAllStudents()
+        public List<(string Name, string Speciality, string Group)> GetAllStudents()
         {
-            return students;
+            var copy = students.Select(s => (s.Name, s.Speciality, s.Group)).ToList();
+            return copy;
         }
         public Dictionary<string, int> Histogram()
         {
             return students.GroupBy(g => g.Group).ToDictionary(g => g.Key, g => g.Count());
         }
 
-        // дляя проверки имени на корректность (без цифр и спец символов)
         public bool NameValidator(string name)
         {
             for (int i = 0; i < name.Length - 1; i++)

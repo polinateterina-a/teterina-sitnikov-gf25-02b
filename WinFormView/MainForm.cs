@@ -10,6 +10,7 @@ namespace WinFormView
         {
             InitializeComponent();
             this.logic = logic;
+                      
         }
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
