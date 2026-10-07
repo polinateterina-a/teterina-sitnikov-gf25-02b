@@ -10,39 +10,136 @@ namespace WinFormView
         {
             InitializeComponent();
             this.logic = logic;
-                      
+            UpdateData();
         }
+        private void ShowingStudents()
+        {
+            dataGridViewStudents.Rows.Clear();
+
+            var students = logic.GetAllStudents();
+
+            foreach (var item in students)
+            {
+                dataGridViewStudents.Rows.Add(
+                    item.Name,
+                    item.Speciality,
+                    item.Group);
+            }
+        }
+        
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
-            Hide();
-            AddStudentForm form = new AddStudentForm(logic);
+            AddStudentForm form = new AddStudentForm(logic, this);
             form.ShowDialog();
             Show();
         }
         private void buttonDeleteStudent_Click(object sender, EventArgs e)
         {
-            Hide();
-            DeleteStudentForm form = new DeleteStudentForm(logic);
-            form.ShowDialog();
-            Show();
+            if (dataGridViewStudents.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(
+                    "Выберите студента.",
+                    "Удаление",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            int index = dataGridViewStudents.SelectedRows[0].Index;
+
+            bool deleted = logic.DeleteStudent(index);
+
+            if (deleted)
+            {
+                MessageBox.Show(
+                    "Студент удалён.",
+                    "Удаление",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                UpdateData();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Не удалось удалить студента.",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
-        private void buttonShowStudents_Click(object sender, EventArgs e)
+        public void UpdateData()
         {
-            Hide();
-            StudentListForm form = new StudentListForm(logic);
-            form.ShowDialog();
-            Show();
+            ShowingStudents();
+            HistogramPanel.Refresh();
         }
 
-        private void buttonHistogram_Click(object sender, EventArgs e)
+        private void HistogramPanel_Paint_1(object sender, PaintEventArgs e)
         {
-            Hide();
-            HistogramForm form = new HistogramForm(logic);
-            form.ShowDialog();
-            Show();
+            var histogram = logic.Histogram();
+
+            if (histogram.Count == 0)
+            {
+                e.Graphics.DrawString(
+                    "Нет данных",
+                    Font,
+                    Brushes.Black,
+                    20,
+                    20);
+
+                return;
+            }
+
+            int x = 20;
+            int y = 30;
+
+            float maxTextWidth = 0;
+
+            foreach (var item in histogram)
+            {
+                float width = e.Graphics.MeasureString(item.Key, Font).Width;
+
+                if (width > maxTextWidth)
+                    maxTextWidth = width;
+            }
+
+            float barX = x + maxTextWidth + 20;
+
+            foreach (var item in histogram)
+            {
+                string group = item.Key;
+                int count = item.Value;
+
+                e.Graphics.DrawString(
+                    group,
+                    Font,
+                    Brushes.Black,
+                    x,
+                    y);
+
+                int barWidth = count * 30;
+
+                e.Graphics.FillRectangle(
+                    Brushes.SteelBlue,
+                    barX,
+                    y,
+                    barWidth,
+                    20);
+
+                e.Graphics.DrawString(
+                    count.ToString(),
+                    Font,
+                    Brushes.Black,
+                    barX + barWidth,
+                    y);
+
+                y += 40;
+            }
         }
     }
+
 }
 
 

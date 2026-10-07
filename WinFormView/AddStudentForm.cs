@@ -5,10 +5,12 @@ namespace WinFormView
     public partial class AddStudentForm : Form
     {
         private readonly Logic logic;
-        public AddStudentForm(Logic logic)
+        private readonly MainForm main;
+        public AddStudentForm(Logic logic, MainForm main)
         {
             InitializeComponent();
             this.logic = logic;
+            this.main = main;
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -31,6 +33,7 @@ namespace WinFormView
                 textBoxFullName.Clear();
                 textBoxSpeciality.Clear();
                 textBoxGroup.Clear();
+                
             }
             else
             {
@@ -40,6 +43,7 @@ namespace WinFormView
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            main.UpdateData();
         }
         private void buttonToStart_Click(object sender, EventArgs e)
         {
