@@ -1,6 +1,6 @@
-using BusinessLogic;
-using Model;
 using DataAccess;
+using Model;
+using BusinessLogic;
 
 namespace WinFormView
 {
@@ -10,7 +10,13 @@ namespace WinFormView
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Logic logic = new Logic(new EntityRepository<Student>());
+
+            // По умолчанию запускаем Entity Framework.
+            IRepository<Student> repository =
+                new EntityRepository<Student>();
+
+            Logic logic = new Logic(repository);
+
             Application.Run(new MainForm(logic));
         }
     }

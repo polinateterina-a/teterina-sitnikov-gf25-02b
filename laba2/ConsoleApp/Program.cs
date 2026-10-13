@@ -2,7 +2,30 @@
 using DataAccess;
 using Model;
 
-var logic = new Logic(new EntityRepository<Student>());
+Console.WriteLine("Выберите способ работы с базой данных:");
+Console.WriteLine("1 — Entity Framework");
+Console.WriteLine("2 — Dapper");
+Console.Write("Ваш выбор: ");
+
+string choice = Console.ReadLine();
+
+IRepository<Student> repository;
+
+if (choice == "1")
+{
+    repository = new EntityRepository<Student>();
+}
+else if (choice == "2")
+{
+    repository = new DapperRepository<Student>();
+}
+else
+{
+    Console.WriteLine("Неверный выбор.");
+    return;
+}
+
+Logic logic = new Logic(repository);
 bool up = true;
 
 while (up)

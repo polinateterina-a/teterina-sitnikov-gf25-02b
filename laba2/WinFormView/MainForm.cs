@@ -1,17 +1,21 @@
-using BusinessLogic;
 
+using BusinessLogic;
+using DataAccess;
+using Model;
 
 namespace WinFormView
 {
     public partial class MainForm : Form
     {
-        public readonly Logic logic;
+        public Logic logic;
+
         public MainForm(Logic logic)
         {
             InitializeComponent();
             this.logic = logic;
             UpdateData();
         }
+
         private void ShowingStudents()
         {
             dataGridViewStudents.Rows.Clear();
@@ -26,13 +30,14 @@ namespace WinFormView
                     item.Group);
             }
         }
-        
+
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
             AddStudentForm form = new AddStudentForm(logic, this);
             form.ShowDialog();
-            Show();
+            UpdateData();
         }
+
         private void buttonDeleteStudent_Click(object sender, EventArgs e)
         {
             if (dataGridViewStudents.SelectedRows.Count == 0)
@@ -138,9 +143,35 @@ namespace WinFormView
                 y += 40;
             }
         }
-    }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            IRepository<Student> repository;
+
+            if (checkBox1.Checked)
+            {
+                repository = new DapperRepository<Student>();
+            }
+            else
+            {
+                repository = new EntityRepository<Student>();
+            }
+
+            logic = new Logic(repository);
+
+            UpdateData();
+
+            MessageBox.Show(
+                checkBox1.Checked
+                    ? "Выбран Dapper."
+                    : "Выбран Entity Framework.",
+                "Способ доступа к БД",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+    }
 }
+
 
 
 

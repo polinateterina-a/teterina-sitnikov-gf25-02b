@@ -35,6 +35,8 @@
             GroupColumn = new DataGridViewTextBoxColumn();
             DirectionColumn = new DataGridViewTextBoxColumn();
             HistogramPanel = new Panel();
+            label1 = new Label();
+            checkBox1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).BeginInit();
             SuspendLayout();
             // 
@@ -104,11 +106,32 @@
             HistogramPanel.TabIndex = 4;
             HistogramPanel.Paint += HistogramPanel_Paint_1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(703, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 6;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(671, 98);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(81, 24);
+            checkBox1.TabIndex = 7;
+            checkBox1.Text = "Dapper";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(628, 536);
+            ClientSize = new Size(853, 536);
+            Controls.Add(checkBox1);
+            Controls.Add(label1);
             Controls.Add(HistogramPanel);
             Controls.Add(dataGridViewStudents);
             Controls.Add(buttonDeleteStudent);
@@ -118,6 +141,7 @@
             Text = "DecanatPRO";
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -128,5 +152,7 @@
         private DataGridViewTextBoxColumn FullNameColumn;
         private DataGridViewTextBoxColumn GroupColumn;
         private DataGridViewTextBoxColumn DirectionColumn;
+        private Label label1;
+        private CheckBox checkBox1;
     }
 }
