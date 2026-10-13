@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Exceptions
+!DataAccess/Database1.mdf
+!DataAccess/Database1_log.ldf
