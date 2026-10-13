@@ -363,5 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Exceptions
-!DataAccess/Database1.mdf
-!DataAccess/Database1_log.ldf
+!laba2/DataAccess/Database1.mdf
+!laba2/DataAccess/Database1_log.ldf
