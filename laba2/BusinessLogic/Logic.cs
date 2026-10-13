@@ -1,11 +1,18 @@
 ﻿using Model;
 using System.Globalization;
+
 namespace BusinessLogic
 {
     public class Logic
     {
-        private readonly List<Student> students = new();
-        public bool AddStudent(string name, string speciality, string group, out string error) 
+        private readonly IRepository<Student> repository;
+
+        public Logic(IRepository<Student> _repository)
+        {
+            repository = _repository;
+        }
+
+        public bool AddStudent(string name, string speciality, string group, out string error)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -36,19 +43,21 @@ namespace BusinessLogic
             name = name.Trim();
             speciality = speciality.Trim().ToUpper();
             group = group.Trim();
-            
-            var existingGroup = students.FirstOrDefault(s => s.Speciality.Equals(speciality, StringComparison.OrdinalIgnoreCase));
+
+            var existingGroup = repository.ReadALL()
+                .FirstOrDefault(s => s.Speciality.Equals(speciality, StringComparison.OrdinalIgnoreCase));
 
             if (existingGroup != null && group.ToUpper() != existingGroup.Group.ToUpper())
             {
                 error = $"Группа {speciality} уже относится к направлению {existingGroup.Group}";
                 return false;
             }
-            students.Add(new Student
+
+            repository.Create(new Student
             {
-                Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()), 
-                Speciality = speciality.ToUpper(), 
-                Group = char.ToUpper(group[0]) + group.Substring(1).ToLower() 
+                Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()),
+                Speciality = speciality.ToUpper(),
+                Group = char.ToUpper(group[0]) + group.Substring(1).ToLower()
             });
             error = null;
             return true;
@@ -56,23 +65,28 @@ namespace BusinessLogic
 
         public bool DeleteStudent(int index)
         {
+            var students = repository.ReadALL();
             if (index < 0 || index >= students.Count)
             {
                 return false;
             }
 
-            students.RemoveAt(index);
+            repository.Delete(students[index]);
             return true;
         }
 
         public List<(string Name, string Speciality, string Group)> GetAllStudents()
         {
-            var copy = students.Select(s => (s.Name, s.Speciality, s.Group)).ToList();
-            return copy;
+            return repository.ReadALL()
+                .Select(s => (s.Name, s.Speciality, s.Group))
+                .ToList();
         }
+
         public Dictionary<string, int> Histogram()
         {
-            return students.GroupBy(g => g.Group).ToDictionary(g => g.Key, g => g.Count());
+            return repository.ReadALL()
+                .GroupBy(g => g.Group)
+                .ToDictionary(g => g.Key, g => g.Count());
         }
 
         public bool NameValidator(string name)
@@ -91,7 +105,6 @@ namespace BusinessLogic
                 bool space = c == ' ';
                 bool dash = c == '-';
 
-
                 if (!upper && !lower && !space && !dash)
                 {
                     return false;
@@ -99,9 +112,9 @@ namespace BusinessLogic
             }
             return true;
         }
+
         public bool SpecialityValidator(string speciality)
         {
-
             foreach (char c in speciality)
             {
                 bool upper = (c >= 'А' && c <= 'Я') || c == 'Ё';
@@ -109,7 +122,6 @@ namespace BusinessLogic
                 bool number = (c >= '0' && c <= '9');
                 bool space = c == ' ';
                 bool dash = c == '-';
-
 
                 if (!upper && !lower && !space && !dash && !number)
                 {

@@ -1,4 +1,6 @@
 using BusinessLogic;
+using Model;
+using DataAccess;
 
 namespace WinFormView
 {
@@ -8,7 +10,7 @@ namespace WinFormView
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Logic logic = new Logic();
+            Logic logic = new Logic(new EntityRepository<Student>());
             Application.Run(new MainForm(logic));
         }
     }

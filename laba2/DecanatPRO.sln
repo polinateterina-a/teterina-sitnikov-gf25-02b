@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleView", "ConsoleApp\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormView", "WinFormView\WinFormView.csproj", "{D5F09B20-6605-4975-8F38-258E7CF62F19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{60FBDF8F-6C65-4FA0-98A1-8AF26CE43E37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5F09B20-6605-4975-8F38-258E7CF62F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60FBDF8F-6C65-4FA0-98A1-8AF26CE43E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FBDF8F-6C65-4FA0-98A1-8AF26CE43E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FBDF8F-6C65-4FA0-98A1-8AF26CE43E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FBDF8F-6C65-4FA0-98A1-8AF26CE43E37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

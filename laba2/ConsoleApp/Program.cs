@@ -1,6 +1,8 @@
 ﻿using BusinessLogic;
+using DataAccess;
+using Model;
 
-var logic = new Logic();
+var logic = new Logic(new EntityRepository<Student>());
 bool up = true;
 
 while (up)
