@@ -23,12 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Database1.mdf">
+    <Content Include="Database1.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Database1_log.ldf">
+    </Content>
+    <Content Include="Database1_log.ldf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
 </Project>
