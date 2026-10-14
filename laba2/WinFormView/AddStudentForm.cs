@@ -24,11 +24,6 @@ namespace WinFormView
                 group,
                 out string error))
             {
-                MessageBox.Show(
-                    "Студент успешно добавлен",
-                    " ",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
 
                 textBoxFullName.Clear();
                 textBoxSpeciality.Clear();

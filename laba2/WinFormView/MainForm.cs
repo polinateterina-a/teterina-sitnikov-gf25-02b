@@ -57,13 +57,14 @@ namespace WinFormView
 
             if (deleted)
             {
+                UpdateData();
                 MessageBox.Show(
                     "Студент удалён.",
                     "Удаление",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
 
-                UpdateData();
+                
             }
             else
             {
@@ -78,72 +79,9 @@ namespace WinFormView
         public void UpdateData()
         {
             ShowingStudents();
-            HistogramPanel.Refresh();
         }
 
-        private void HistogramPanel_Paint_1(object sender, PaintEventArgs e)
-        {
-            var histogram = logic.Histogram();
-
-            if (histogram.Count == 0)
-            {
-                e.Graphics.DrawString(
-                    "Нет данных",
-                    Font,
-                    Brushes.Black,
-                    20,
-                    20);
-
-                return;
-            }
-
-            int x = 20;
-            int y = 30;
-
-            float maxTextWidth = 0;
-
-            foreach (var item in histogram)
-            {
-                float width = e.Graphics.MeasureString(item.Key, Font).Width;
-
-                if (width > maxTextWidth)
-                    maxTextWidth = width;
-            }
-
-            float barX = x + maxTextWidth + 20;
-
-            foreach (var item in histogram)
-            {
-                string group = item.Key;
-                int count = item.Value;
-
-                e.Graphics.DrawString(
-                    group,
-                    Font,
-                    Brushes.Black,
-                    x,
-                    y);
-
-                int barWidth = count * 30;
-
-                e.Graphics.FillRectangle(
-                    Brushes.SteelBlue,
-                    barX,
-                    y,
-                    barWidth,
-                    20);
-
-                e.Graphics.DrawString(
-                    count.ToString(),
-                    Font,
-                    Brushes.Black,
-                    barX + barWidth,
-                    y);
-
-                y += 40;
-            }
-        }
-
+        
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             IRepository<Student> repository;
@@ -160,14 +98,12 @@ namespace WinFormView
             logic = new Logic(repository);
 
             UpdateData();
+        }
 
-            MessageBox.Show(
-                checkBox1.Checked
-                    ? "Выбран Dapper."
-                    : "Выбран Entity Framework.",
-                "Способ доступа к БД",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+        private void buttonHistogram_Click(object sender, EventArgs e)
+        {
+            using var form = new HistogramForm(logic);
+            form.ShowDialog();
         }
     }
 }
