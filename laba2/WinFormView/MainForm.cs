@@ -5,10 +5,17 @@ using Model;
 
 namespace WinFormView
 {
+    /// <summary>
+    /// Главное окно приложения: таблица студентов, добавление, удаление, гистограмма.
+    /// </summary>
     public partial class MainForm : Form
     {
         public Logic logic;
 
+        /// <summary>
+        /// Создаёт главное окно.
+        /// </summary>
+        /// <param name="logic">Бизнес-логика, с которой работает окно.</param>
         public MainForm(Logic logic)
         {
             InitializeComponent();
@@ -31,14 +38,14 @@ namespace WinFormView
             }
         }
 
-        private void buttonAddStudent_Click(object sender, EventArgs e)
+        private void ButtonAddStudent_Click(object sender, EventArgs e)
         {
             AddStudentForm form = new AddStudentForm(logic, this);
             form.ShowDialog();
             UpdateData();
         }
 
-        private void buttonDeleteStudent_Click(object sender, EventArgs e)
+        private void ButtonDeleteStudent_Click(object sender, EventArgs e)
         {
             if (dataGridViewStudents.SelectedRows.Count == 0)
             {
@@ -76,17 +83,20 @@ namespace WinFormView
             }
         }
 
+        /// <summary>
+        /// Обновляет данные в таблице студентов.
+        /// </summary>
         public void UpdateData()
         {
             ShowingStudents();
         }
 
         
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             IRepository<Student> repository;
 
-            if (checkBox1.Checked)
+            if (CheckBox1.Checked)
             {
                 repository = new DapperRepository<Student>();
             }
@@ -100,7 +110,7 @@ namespace WinFormView
             UpdateData();
         }
 
-        private void buttonHistogram_Click(object sender, EventArgs e)
+        private void ButtonHistogram_Click(object sender, EventArgs e)
         {
             using var form = new HistogramForm(logic);
             form.ShowDialog();

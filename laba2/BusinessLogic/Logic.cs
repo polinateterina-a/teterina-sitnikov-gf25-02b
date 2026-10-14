@@ -1,17 +1,34 @@
 ﻿using Model;
 using System.Globalization;
+using DataAccess;
 
 namespace BusinessLogic
 {
+    /// <summary>
+    /// Бизнес-логика работы со студентами: проверка ввода, форматирование данных
+    /// и обращение к хранилищу через репозиторий.
+    /// </summary>
     public class Logic
     {
         private readonly IRepository<Student> repository;
 
+        /// <summary>
+        /// Создаёт логику, работающую с указанным репозиторием.
+        /// </summary>
+        /// <param name="repository">Репозиторий студентов (Entity Framework, Dapper и т.д.).</param>
         public Logic(IRepository<Student> _repository)
         {
             repository = _repository;
         }
 
+        /// <summary>
+        /// Проверяет введённые данные и добавляет студента в хранилище.
+        /// </summary>
+        /// <param name="name">ФИО студента.</param>
+        /// <param name="speciality">Группа студента.</param>
+        /// <param name="group">Направление подготовки.</param>
+        /// <param name="error">Текст ошибки, если студента добавить не удалось; иначе null.</param>
+        /// <returns>true, если студент добавлен; false, если данные не прошли проверку.</returns>
         public bool AddStudent(string name, string speciality, string group, out string error)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -63,6 +80,11 @@ namespace BusinessLogic
             return true;
         }
 
+        /// <summary>
+        /// Удаляет студента по его порядковому номеру в списке.
+        /// </summary>
+        /// <param name="index">Номер студента в списке, начиная с 0.</param>
+        /// <returns>true, если студент удалён; false, если номер выходит за границы списка.</returns>
         public bool DeleteStudent(int index)
         {
             var students = repository.ReadALL();
@@ -75,6 +97,10 @@ namespace BusinessLogic
             return true;
         }
 
+        /// <summary>
+        /// Возвращает всех студентов.
+        /// </summary>
+        /// <returns>Список кортежей: ФИО, группа, направление.</returns>
         public List<(string Name, string Speciality, string Group)> GetAllStudents()
         {
             return repository.ReadALL()
@@ -82,6 +108,10 @@ namespace BusinessLogic
                 .ToList();
         }
 
+        /// <summary>
+        /// Подсчитывает количество студентов по направлениям.
+        /// </summary>
+        /// <returns>Словарь: направление и число студентов в нём.</returns>
         public Dictionary<string, int> Histogram()
         {
             return repository.ReadALL()
@@ -89,6 +119,11 @@ namespace BusinessLogic
                 .ToDictionary(g => g.Key, g => g.Count());
         }
 
+        /// <summary>
+        /// Проверяет, что ФИО содержит только русские буквы, пробелы и дефисы, без двойных пробелов.
+        /// </summary>
+        /// <param name="name">Проверяемая строка.</param>
+        /// <returns>true, если строка допустима.</returns>
         public bool NameValidator(string name)
         {
             for (int i = 0; i < name.Length - 1; i++)
@@ -113,6 +148,11 @@ namespace BusinessLogic
             return true;
         }
 
+        /// <summary>
+        /// Проверяет, что строка содержит только русские буквы, цифры, пробелы и дефисы.
+        /// </summary>
+        /// <param name="speciality">Проверяемая строка.</param>
+        /// <returns>true, если строка допустима.</returns>
         public bool SpecialityValidator(string speciality)
         {
             foreach (char c in speciality)

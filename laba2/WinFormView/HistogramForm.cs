@@ -3,8 +3,15 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WinFormView
 {
+    /// <summary>
+    /// Окно с гистограммой распределения студентов по направлениям.
+    /// </summary>
     public partial class HistogramForm : Form
     {
+        /// <summary>
+        /// Создаёт окно и строит гистограмму по данным из бизнес-логики.
+        /// </summary>
+        /// <param name="logic">Бизнес-логика, из которой берутся данные для гистограммы.</param>
         public HistogramForm(Logic logic)
         {
             Text = "Гистограмма";
@@ -19,7 +26,9 @@ namespace WinFormView
             var chart = new Chart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.White
+                BackColor = Color.White,    
+                AntiAliasing = AntiAliasingStyles.All,
+                TextAntiAliasingQuality = TextAntiAliasingQuality.High
             };
 
             var area = new ChartArea("Main");
@@ -30,6 +39,7 @@ namespace WinFormView
             area.AxisY.Minimum = 0;
             area.AxisY.Interval = 1;
             area.AxisY.MajorGrid.Enabled = false;
+            area.AxisY.TitleFont = new Font("Segoe UI", 9);
             area.AxisY.Title = "Количество студентов";
             chart.ChartAreas.Add(area);
 

@@ -3,8 +3,13 @@
 
 namespace DataAccess
 {
+    /// <summary>
+    /// Репозиторий на Entity Framework: хранит объекты в базе данных SQL Server (LocalDB).
+    /// </summary>
+    /// <typeparam name="T">Тип доменного объекта.</typeparam>
     public class EntityRepository<T> : IRepository<T> where T : class, IDomainObject
     {
+       /// <inheritdoc/>
         public void Create(T item)
         {
             using (var context = new Context())
@@ -15,6 +20,7 @@ namespace DataAccess
             }
         }
 
+        /// <inheritdoc/>
         public List<T> ReadALL()
         {
             using (var context = new Context())
@@ -24,6 +30,7 @@ namespace DataAccess
             }
         }
 
+        /// <inheritdoc/>
         public void Delete(T item)
         {
             using (var context = new Context())

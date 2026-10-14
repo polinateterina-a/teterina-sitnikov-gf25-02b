@@ -35,9 +35,9 @@
             textBoxSpeciality = new TextBox();
             label4 = new Label();
             textBoxGroup = new TextBox();
-            buttonAdd = new Button();
+            ButtonAdd = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            buttonToStart = new Button();
+            ButtonToStart = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,18 +117,18 @@
             textBoxGroup.Size = new Size(634, 27);
             textBoxGroup.TabIndex = 6;
             // 
-            // buttonAdd
+            // ButtonAdd
             // 
-            buttonAdd.BackColor = SystemColors.AppWorkspace;
-            buttonAdd.Dock = DockStyle.Fill;
-            buttonAdd.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonAdd.Location = new Point(83, 363);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(634, 39);
-            buttonAdd.TabIndex = 7;
-            buttonAdd.Text = "Добавить";
-            buttonAdd.UseVisualStyleBackColor = false;
-            buttonAdd.Click += buttonAdd_Click;
+            ButtonAdd.BackColor = SystemColors.AppWorkspace;
+            ButtonAdd.Dock = DockStyle.Fill;
+            ButtonAdd.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonAdd.Location = new Point(83, 363);
+            ButtonAdd.Name = "ButtonAdd";
+            ButtonAdd.Size = new Size(634, 39);
+            ButtonAdd.TabIndex = 7;
+            ButtonAdd.Text = "Добавить";
+            ButtonAdd.UseVisualStyleBackColor = false;
+            ButtonAdd.Click += ButtonAdd_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -136,7 +136,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Controls.Add(buttonAdd, 1, 8);
+            tableLayoutPanel1.Controls.Add(ButtonAdd, 1, 8);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Controls.Add(textBoxGroup, 1, 6);
             tableLayoutPanel1.Controls.Add(label2, 1, 1);
@@ -144,7 +144,7 @@
             tableLayoutPanel1.Controls.Add(textBoxFullName, 1, 2);
             tableLayoutPanel1.Controls.Add(textBoxSpeciality, 1, 4);
             tableLayoutPanel1.Controls.Add(label3, 1, 3);
-            tableLayoutPanel1.Controls.Add(buttonToStart, 1, 9);
+            tableLayoutPanel1.Controls.Add(ButtonToStart, 1, 9);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -162,18 +162,18 @@
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 8;
             // 
-            // buttonToStart
+            // ButtonToStart
             // 
-            buttonToStart.BackColor = SystemColors.AppWorkspace;
-            buttonToStart.Dock = DockStyle.Fill;
-            buttonToStart.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonToStart.Location = new Point(83, 408);
-            buttonToStart.Name = "buttonToStart";
-            buttonToStart.Size = new Size(634, 39);
-            buttonToStart.TabIndex = 8;
-            buttonToStart.Text = "На главную";
-            buttonToStart.UseVisualStyleBackColor = false;
-            buttonToStart.Click += buttonToStart_Click;
+            ButtonToStart.BackColor = SystemColors.AppWorkspace;
+            ButtonToStart.Dock = DockStyle.Fill;
+            ButtonToStart.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonToStart.Location = new Point(83, 408);
+            ButtonToStart.Name = "ButtonToStart";
+            ButtonToStart.Size = new Size(634, 39);
+            ButtonToStart.TabIndex = 8;
+            ButtonToStart.Text = "На главную";
+            ButtonToStart.UseVisualStyleBackColor = false;
+            ButtonToStart.Click += ButtonToStart_Click;
             // 
             // AddStudentForm
             // 
@@ -197,8 +197,8 @@
         private TextBox textBoxSpeciality;
         private Label label4;
         private TextBox textBoxGroup;
-        private Button buttonAdd;
+        private Button ButtonAdd;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button buttonToStart;
+        private Button ButtonToStart;
     }
 }

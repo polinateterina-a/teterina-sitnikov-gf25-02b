@@ -5,12 +5,16 @@ using System.Configuration;
 
 namespace DataAccess
 {
+    /// <summary>
+    /// Репозиторий на Dapper: выполняет SQL-запросы к базе данных напрямую
+    /// </summary>
+    /// <typeparam name="T"> Тип доменного объекта. </typeparam>
     public class DapperRepository<T> : IRepository<T>
         where T : class, IDomainObject
     {
-        private readonly string connectionString =
-            ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
+        /// <inheritdoc/>
         public void Create(T item)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -31,6 +35,7 @@ namespace DataAccess
             }
         }
 
+        /// <inheritdoc/>
         public List<T> ReadALL()
         {
             using (var connection = new SqlConnection(connectionString))
@@ -50,6 +55,7 @@ namespace DataAccess
             }
         }
 
+        /// <inheritdoc/>
         public void Delete(T item)
         {
             using (var connection = new SqlConnection(connectionString))

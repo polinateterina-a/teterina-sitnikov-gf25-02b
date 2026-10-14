@@ -2,17 +2,25 @@
 
 namespace WinFormView
 {
+    /// <summary>
+    /// Окно добавления студента
+    /// </summary>
     public partial class AddStudentForm : Form
     {
         private readonly Logic logic;
         private readonly MainForm main;
+        /// <summary>
+        /// Создаёт окно и строит добавляет студентов по данным из бизнес-логики. Обновляет главное окно.
+        /// </summary>
+        /// <param name="logic"></param>
+        /// <param name="main"></param>
         public AddStudentForm(Logic logic, MainForm main)
         {
             InitializeComponent();
             this.logic = logic;
             this.main = main;
         }
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             string fullName = textBoxFullName.Text;
             string speciality = textBoxSpeciality.Text;
@@ -40,7 +48,7 @@ namespace WinFormView
             }
             main.UpdateData();
         }
-        private void buttonToStart_Click(object sender, EventArgs e)
+        private void ButtonToStart_Click(object sender, EventArgs e)
         {
             Close();
         }

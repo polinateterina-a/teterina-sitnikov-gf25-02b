@@ -1,22 +1,26 @@
 ﻿namespace Model
 {
-    public interface IRepository<T> where T : class, IDomainObject
-    {
-        void Create(T item);
-        List<T> ReadALL();
-        void Delete(T item);
-    }
-
+    /// <summary>
+    /// Описывает сущность, у которой есть уникальный идентификатор в источнике данных.
+    /// </summary>
     public interface IDomainObject
     {
+        /// <summary>Уникальный идентификатор записи.</summary>
         int Id { get; set; }
     }
 
+    /// <summary>
+    /// Студент: доменный объект, который хранится в базе данных.
+    /// Каждое свойство можно задать только один раз, повторная запись игнорируется.
+    /// </summary>
     public class Student : IDomainObject
     {
+        /// <summary>Уникальный идентификатор студента (первичный ключ в БД).</summary>
         public int Id { get; set; }
 
         private string _name;
+
+        /// <summary>Фамилия, имя (и отчество) студента.</summary>
         public string Name
         {
             get { return _name; }
@@ -30,6 +34,8 @@
         }
 
         private string _speciality;
+
+        /// <summary>Группа студента (например, ПИ-101).</summary>
         public string Speciality
         {
             get { return _speciality; }
@@ -43,6 +49,8 @@
         }
 
         private string _group;
+
+        /// <summary>Направление подготовки студента.</summary>
         public string Group
         {
             get { return _group; }

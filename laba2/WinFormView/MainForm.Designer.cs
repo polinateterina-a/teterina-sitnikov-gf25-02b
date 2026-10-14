@@ -28,47 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonDeleteStudent = new Button();
-            buttonAddStudent = new Button();
+            ButtonDeleteStudent = new Button();
+            ButtonAddStudent = new Button();
             dataGridViewStudents = new DataGridView();
             FullNameColumn = new DataGridViewTextBoxColumn();
             GroupColumn = new DataGridViewTextBoxColumn();
             DirectionColumn = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            checkBox1 = new CheckBox();
-            buttonHistogram = new Button();
+            CheckBox1 = new CheckBox();
+            ButtonHistogram = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // buttonDeleteStudent
+            // ButtonDeleteStudent
             // 
-            buttonDeleteStudent.BackColor = SystemColors.AppWorkspace;
-            buttonDeleteStudent.Dock = DockStyle.Fill;
-            buttonDeleteStudent.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDeleteStudent.Location = new Point(383, 270);
-            buttonDeleteStudent.Margin = new Padding(3, 2, 3, 2);
-            buttonDeleteStudent.Name = "buttonDeleteStudent";
-            buttonDeleteStudent.Size = new Size(130, 66);
-            buttonDeleteStudent.TabIndex = 2;
-            buttonDeleteStudent.Text = "Удалить студента";
-            buttonDeleteStudent.UseVisualStyleBackColor = false;
-            buttonDeleteStudent.Click += buttonDeleteStudent_Click;
+            ButtonDeleteStudent.BackColor = SystemColors.AppWorkspace;
+            ButtonDeleteStudent.Dock = DockStyle.Fill;
+            ButtonDeleteStudent.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonDeleteStudent.Location = new Point(439, 361);
+            ButtonDeleteStudent.Name = "ButtonDeleteStudent";
+            ButtonDeleteStudent.Size = new Size(150, 88);
+            ButtonDeleteStudent.TabIndex = 2;
+            ButtonDeleteStudent.Text = "Удалить студента";
+            ButtonDeleteStudent.UseVisualStyleBackColor = false;
+            ButtonDeleteStudent.Click += ButtonDeleteStudent_Click;
             // 
-            // buttonAddStudent
+            // ButtonAddStudent
             // 
-            buttonAddStudent.BackColor = SystemColors.AppWorkspace;
-            buttonAddStudent.Dock = DockStyle.Fill;
-            buttonAddStudent.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonAddStudent.Location = new Point(30, 270);
-            buttonAddStudent.Margin = new Padding(3, 2, 3, 2);
-            buttonAddStudent.Name = "buttonAddStudent";
-            buttonAddStudent.Size = new Size(130, 66);
-            buttonAddStudent.TabIndex = 1;
-            buttonAddStudent.Text = "Добавить студента";
-            buttonAddStudent.UseVisualStyleBackColor = false;
-            buttonAddStudent.Click += buttonAddStudent_Click;
+            ButtonAddStudent.BackColor = SystemColors.AppWorkspace;
+            ButtonAddStudent.Dock = DockStyle.Fill;
+            ButtonAddStudent.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonAddStudent.Location = new Point(34, 361);
+            ButtonAddStudent.Name = "ButtonAddStudent";
+            ButtonAddStudent.Size = new Size(150, 88);
+            ButtonAddStudent.TabIndex = 1;
+            ButtonAddStudent.Text = "Добавить студента";
+            ButtonAddStudent.UseVisualStyleBackColor = false;
+            ButtonAddStudent.Click += ButtonAddStudent_Click;
             // 
             // dataGridViewStudents
             // 
@@ -78,12 +76,11 @@
             dataGridViewStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewStudents.Columns.AddRange(new DataGridViewColumn[] { FullNameColumn, GroupColumn, DirectionColumn });
             tableLayoutPanel1.SetColumnSpan(dataGridViewStudents, 5);
-            dataGridViewStudents.Location = new Point(30, 21);
-            dataGridViewStudents.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewStudents.Location = new Point(34, 29);
             dataGridViewStudents.Name = "dataGridViewStudents";
             dataGridViewStudents.ReadOnly = true;
             dataGridViewStudents.RowHeadersWidth = 51;
-            dataGridViewStudents.Size = new Size(483, 238);
+            dataGridViewStudents.Size = new Size(555, 317);
             dataGridViewStudents.TabIndex = 3;
             // 
             // FullNameColumn
@@ -110,37 +107,37 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(615, 40);
+            label1.Location = new Point(703, 53);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 6;
             // 
-            // checkBox1
+            // CheckBox1
             // 
-            checkBox1.Anchor = AnchorStyles.None;
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(239, 352);
-            checkBox1.Margin = new Padding(3, 2, 3, 2);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(64, 19);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Dapper";
-            checkBox1.TextAlign = ContentAlignment.MiddleCenter;
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            CheckBox1.Anchor = AnchorStyles.None;
+            CheckBox1.AutoSize = true;
+            CheckBox1.Location = new Point(271, 471);
+            CheckBox1.Name = "CheckBox1";
+            CheckBox1.Size = new Size(81, 24);
+            CheckBox1.TabIndex = 7;
+            CheckBox1.Text = "Dapper";
+            CheckBox1.TextAlign = ContentAlignment.MiddleCenter;
+            CheckBox1.UseVisualStyleBackColor = true;
+            CheckBox1.CheckedChanged += CheckBox1_CheckedChanged;
             // 
-            // buttonHistogram
+            // ButtonHistogram
             // 
-            buttonHistogram.BackColor = SystemColors.ActiveBorder;
-            buttonHistogram.Dock = DockStyle.Fill;
-            buttonHistogram.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            buttonHistogram.Location = new Point(193, 271);
-            buttonHistogram.Name = "buttonHistogram";
-            buttonHistogram.Size = new Size(157, 64);
-            buttonHistogram.TabIndex = 8;
-            buttonHistogram.Text = "Гистограмма";
-            buttonHistogram.UseVisualStyleBackColor = false;
-            buttonHistogram.Click += buttonHistogram_Click;
+            ButtonHistogram.BackColor = SystemColors.ActiveBorder;
+            ButtonHistogram.Dock = DockStyle.Fill;
+            ButtonHistogram.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ButtonHistogram.Location = new Point(221, 362);
+            ButtonHistogram.Margin = new Padding(3, 4, 3, 4);
+            ButtonHistogram.Name = "ButtonHistogram";
+            ButtonHistogram.Size = new Size(181, 86);
+            ButtonHistogram.TabIndex = 8;
+            ButtonHistogram.Text = "Гистограмма";
+            ButtonHistogram.UseVisualStyleBackColor = false;
+            ButtonHistogram.Click += ButtonHistogram_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -152,13 +149,14 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.Controls.Add(checkBox1, 3, 5);
-            tableLayoutPanel1.Controls.Add(buttonHistogram, 3, 3);
+            tableLayoutPanel1.Controls.Add(CheckBox1, 3, 5);
+            tableLayoutPanel1.Controls.Add(ButtonHistogram, 3, 3);
             tableLayoutPanel1.Controls.Add(dataGridViewStudents, 1, 1);
-            tableLayoutPanel1.Controls.Add(buttonAddStudent, 1, 3);
-            tableLayoutPanel1.Controls.Add(buttonDeleteStudent, 5, 3);
+            tableLayoutPanel1.Controls.Add(ButtonAddStudent, 1, 3);
+            tableLayoutPanel1.Controls.Add(ButtonDeleteStudent, 5, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 4.866357F));
@@ -168,17 +166,16 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 1.67791975F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.954096F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 4.866356F));
-            tableLayoutPanel1.Size = new Size(546, 402);
+            tableLayoutPanel1.Size = new Size(624, 536);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 402);
+            ClientSize = new Size(624, 536);
             Controls.Add(label1);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DecanatPRO";
@@ -190,15 +187,15 @@
         }
 
         #endregion
-        private Button buttonDeleteStudent;
-        private Button buttonAddStudent;
+        private Button ButtonDeleteStudent;
+        private Button ButtonAddStudent;
         private DataGridView dataGridViewStudents;
         private DataGridViewTextBoxColumn FullNameColumn;
         private DataGridViewTextBoxColumn GroupColumn;
         private DataGridViewTextBoxColumn DirectionColumn;
         private Label label1;
-        private CheckBox checkBox1;
-        private Button buttonHistogram;
+        private CheckBox CheckBox1;
+        private Button ButtonHistogram;
         private TableLayoutPanel tableLayoutPanel1;
     }
 }
