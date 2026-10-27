@@ -11,7 +11,7 @@ namespace DataAccess
     /// Репозиторий: набор операций доступа к данным (CRUD) для сущностей типа <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">Тип доменного объекта.</typeparam>
-    public interface IRepository<T> where T : class, IDomainObject
+    public interface IRepository<T> where T : class, IDomainObject, new()
     {
         /// <summary>Добавляет новую запись в источник данных.</summary>
         /// <param name="obj">Добавляемый объект.</param>

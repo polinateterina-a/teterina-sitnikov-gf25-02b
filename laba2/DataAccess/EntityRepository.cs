@@ -7,7 +7,7 @@ namespace DataAccess
     /// Репозиторий на Entity Framework: хранит объекты в базе данных SQL Server (LocalDB).
     /// </summary>
     /// <typeparam name="T">Тип доменного объекта.</typeparam>
-    public class EntityRepository<T> : IRepository<T> where T : class, IDomainObject
+    public class EntityRepository<T> : IRepository<T> where T : class, IDomainObject, new()
     {
        /// <inheritdoc/>
         public void Create(T item)

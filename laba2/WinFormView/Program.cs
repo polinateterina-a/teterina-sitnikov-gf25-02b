@@ -10,13 +10,8 @@ namespace WinFormView
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-
-            // По умолчанию запускаем Entity Framework.
-            IRepository<Student> repository =
-                new EntityRepository<Student>();
-
+            IRepository<Student> repository = new EntityRepository<Student>();
             Logic logic = new Logic(repository);
-
             Application.Run(new MainForm(logic));
         }
     }

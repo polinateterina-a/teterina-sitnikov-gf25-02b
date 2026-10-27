@@ -77,6 +77,7 @@
             dataGridViewStudents.Columns.AddRange(new DataGridViewColumn[] { FullNameColumn, GroupColumn, DirectionColumn });
             tableLayoutPanel1.SetColumnSpan(dataGridViewStudents, 5);
             dataGridViewStudents.Location = new Point(34, 29);
+            dataGridViewStudents.MultiSelect = false;
             dataGridViewStudents.Name = "dataGridViewStudents";
             dataGridViewStudents.ReadOnly = true;
             dataGridViewStudents.RowHeadersWidth = 51;

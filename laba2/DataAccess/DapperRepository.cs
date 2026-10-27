@@ -10,7 +10,7 @@ namespace DataAccess
     /// </summary>
     /// <typeparam name="T"> Тип доменного объекта. </typeparam>
     public class DapperRepository<T> : IRepository<T>
-        where T : class, IDomainObject
+        where T : class, IDomainObject, new()
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
