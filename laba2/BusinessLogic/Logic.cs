@@ -16,10 +16,28 @@ namespace BusinessLogic
         /// Создаёт логику, работающую с указанным репозиторием.
         /// </summary>
         /// <param name="repository">Репозиторий студентов (Entity Framework, Dapper и т.д.).</param>
-        public Logic(IRepository<Student> _repository)
+        public Logic(IRepository<Student> repository)
         {
-            repository = _repository;
+            this.repository = repository;
         }
+
+
+        //public IRepository<Student> ChangeRepository(int choice)
+        //{
+        //    IRepository<Student> repository = null;
+
+        //    if (choice == 1)
+        //    {
+        //        repository = new EntityRepository<Student>();
+
+        //    }
+        //    else if (choice == 2)
+        //    {
+        //        repository = new DapperRepository<Student>();
+        //    }
+        //    return repository;
+        //}
+
 
         /// <summary>
         /// Проверяет введённые данные и добавляет студента в хранилище.

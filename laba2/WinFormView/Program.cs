@@ -1,6 +1,5 @@
-using DataAccess;
-using Model;
 using BusinessLogic;
+using Ninject;
 
 namespace WinFormView
 {
@@ -10,8 +9,9 @@ namespace WinFormView
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            IRepository<Student> repository = new EntityRepository<Student>();
-            Logic logic = new Logic(repository);
+            int choice = 1;
+            IKernel ninjectKernel = new StandardKernel(new SimpleConfigModule(choice));
+            Logic logic = ninjectKernel.Get<Logic>();
             Application.Run(new MainForm(logic));
         }
     }

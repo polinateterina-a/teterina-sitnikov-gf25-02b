@@ -1,7 +1,6 @@
 
 using BusinessLogic;
-using DataAccess;
-using Model;
+using Ninject;
 
 namespace WinFormView
 {
@@ -11,6 +10,7 @@ namespace WinFormView
     public partial class MainForm : Form
     {
         public Logic logic;
+        private IKernel ninjectKernel;
 
         /// <summary>
         /// Создаёт главное окно.
@@ -94,18 +94,19 @@ namespace WinFormView
         
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            IRepository<Student> repository;
-
+            int choice = 0;
             if (CheckBox1.Checked)
             {
-                repository = new DapperRepository<Student>();
+                choice = 2;
             }
             else
             {
-                repository = new EntityRepository<Student>();
+                choice = 1;
             }
 
-            logic = new Logic(repository);
+            ninjectKernel?.Dispose();
+            ninjectKernel = new StandardKernel(new SimpleConfigModule(choice));
+            logic = ninjectKernel.Get<Logic>();
 
             UpdateData();
         }

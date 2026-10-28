@@ -1,31 +1,21 @@
 ﻿using BusinessLogic;
-using DataAccess;
-using Model;
+using Ninject;
 
 Console.WriteLine("Выберите способ работы с базой данных:");
 Console.WriteLine("1 — Entity Framework");
 Console.WriteLine("2 — Dapper");
 Console.Write("Ваш выбор: ");
+int choice = Convert.ToInt32(Console.ReadLine());
 
-string choice = Console.ReadLine();
+IKernel ninjectKernel = new StandardKernel(new SimpleConfigModule(choice));
 
-IRepository<Student> repository;
+Logic logic = ninjectKernel.Get<Logic>();
+//int choice = Convert.ToInt32(Console.ReadLine());
+//Logic logic = new Logic();
+//logic = new Logic(logic.ChangeRepository(choice));
 
-if (choice == "1")
-{
-    repository = new EntityRepository<Student>();
-}
-else if (choice == "2")
-{
-    repository = new DapperRepository<Student>();
-}
-else
-{
-    Console.WriteLine("Неверный выбор.");
-    return;
-}
 
-Logic logic = new Logic(repository);
+
 bool up = true;
 
 while (up)
