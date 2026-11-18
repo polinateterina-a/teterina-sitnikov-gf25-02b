@@ -34,7 +34,9 @@
             FullNameColumn = new DataGridViewTextBoxColumn();
             GroupColumn = new DataGridViewTextBoxColumn();
             DirectionColumn = new DataGridViewTextBoxColumn();
-            HistogramPanel = new Panel();
+            textBoxGroup = new TextBox();
+            textBoxFullName = new TextBox();
+            textBoxSpeciality = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).BeginInit();
             SuspendLayout();
             // 
@@ -96,20 +98,35 @@
             DirectionColumn.Name = "DirectionColumn";
             DirectionColumn.ReadOnly = true;
             // 
-            // HistogramPanel
+            // textBoxGroup
             // 
-            HistogramPanel.Location = new Point(32, 233);
-            HistogramPanel.Name = "HistogramPanel";
-            HistogramPanel.Size = new Size(565, 145);
-            HistogramPanel.TabIndex = 4;
-            HistogramPanel.Paint += HistogramPanel_Paint_1;
+            textBoxGroup.Location = new Point(59, 297);
+            textBoxGroup.Name = "textBoxGroup";
+            textBoxGroup.Size = new Size(452, 27);
+            textBoxGroup.TabIndex = 4;
+            // 
+            // textBoxFullName
+            // 
+            textBoxFullName.Location = new Point(59, 264);
+            textBoxFullName.Name = "textBoxFullName";
+            textBoxFullName.Size = new Size(452, 27);
+            textBoxFullName.TabIndex = 5;
+            // 
+            // textBoxSpeciality
+            // 
+            textBoxSpeciality.Location = new Point(59, 330);
+            textBoxSpeciality.Name = "textBoxSpeciality";
+            textBoxSpeciality.Size = new Size(452, 27);
+            textBoxSpeciality.TabIndex = 6;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(628, 536);
-            Controls.Add(HistogramPanel);
+            ClientSize = new Size(631, 536);
+            Controls.Add(textBoxSpeciality);
+            Controls.Add(textBoxFullName);
+            Controls.Add(textBoxGroup);
             Controls.Add(dataGridViewStudents);
             Controls.Add(buttonDeleteStudent);
             Controls.Add(buttonAddStudent);
@@ -118,15 +135,18 @@
             Text = "DecanatPRO";
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Button buttonDeleteStudent;
         private Button buttonAddStudent;
         private DataGridView dataGridViewStudents;
-        private Panel HistogramPanel;
         private DataGridViewTextBoxColumn FullNameColumn;
         private DataGridViewTextBoxColumn GroupColumn;
         private DataGridViewTextBoxColumn DirectionColumn;
+        private TextBox textBoxGroup;
+        private TextBox textBoxFullName;
+        private TextBox textBoxSpeciality;
     }
 }
