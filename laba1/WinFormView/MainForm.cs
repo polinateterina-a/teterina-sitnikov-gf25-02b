@@ -5,18 +5,31 @@ using System.Windows.Forms;
 
 namespace WinFormView
 {
-    // Обязательно реализуем интерфейс IView для связи с Presenter
+    /// <summary>
+    /// Главная форма приложения, реализующая пассивное представление <see cref="IView"/>.
+    /// </summary>
     public partial class MainForm : Form, IView
     {
+        /// <summary>
+        /// Событие, генерируемое при нажатии кнопки добавления студента.
+        /// </summary>
         public event Action<IEnumerable<object>>? AddDataEvent;
+        /// <summary>
+        /// Событие, генерируемое при нажатии кнопки удаления студента.
+        /// </summary>
         public event Action<int>? DeleteDataEvent;
-
+        /// <summary>
+        /// Инициализирует новый экземпляр главной формы.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Очищает таблицу и заполняет её актуальными данными.
+        /// </summary>
+        /// <param name="data">Коллекция строк с упакованными свойствами студентов.</param>
         public void RedrawForm(IEnumerable<IEnumerable<object>> data)
         {
             dataGridViewStudents.Rows.Clear();
@@ -25,14 +38,21 @@ namespace WinFormView
                 dataGridViewStudents.Rows.Add(row.ToArray());
             }
         }
-
+        /// <summary>
+        /// Очищает текстовые поля ввода ФИО, специальности и группы.
+        /// </summary>
         public void ClearFields()
         {
             textBoxFullName.Clear();
             textBoxSpeciality.Clear();
             textBoxGroup.Clear();
         }
-
+        /// <summary>
+        /// Выводит всплывающее окно <see cref="MessageBox"/> с заданным текстом и иконкой.
+        /// </summary>
+        /// <param name="text">Текст сообщения.</param>
+        /// <param name="caption">Заголовок окна.</param>
+        /// <param name="isError">Если <see langword="true"/>, отображается иконка ошибки; иначе — информационная иконка.</param>
         public void ShowMessage(string text, string caption, bool isError)
         {
             MessageBox.Show(
@@ -42,11 +62,9 @@ namespace WinFormView
                 isError ? MessageBoxIcon.Error : MessageBoxIcon.Information);
         }
 
-        // --- Обработчики событий кнопок ---
+
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
-            // Передаем данные в Presenter. 
-            // Вся логика проверок (if/else) на пустоту и валидацию теперь на стороне Model/Presenter.
             AddDataEvent?.Invoke(new object[]
             {
                 textBoxFullName.Text,
@@ -57,7 +75,6 @@ namespace WinFormView
 
         private void buttonDeleteStudent_Click(object sender, EventArgs e)
         {
-            // Оставил вашу логику с if и MessageBox прямо в форме
             if (dataGridViewStudents.SelectedRows.Count == 0)
             {
                 MessageBox.Show(
@@ -71,7 +88,6 @@ namespace WinFormView
 
             int index = dataGridViewStudents.SelectedRows[0].Index;
 
-            // Передаем команду на удаление в Presenter
             DeleteDataEvent?.Invoke(index);
         }
     }

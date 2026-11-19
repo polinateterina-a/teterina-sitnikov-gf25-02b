@@ -1,8 +1,14 @@
 ﻿namespace Model
 {
+    /// <summary>
+    /// Доменная сущность, представляющая студента.
+    /// </summary>
     public class Student
     {
         private string _name;
+        /// <summary>
+        /// ФИО студента.
+        /// </summary>
         public string Name
         {
             get
@@ -18,6 +24,9 @@
             }
         }
         private string _speciality;
+        /// <summary>
+        /// Специальность (направление подготовки) студента.
+        /// </summary>
         public string Speciality
         {
             get
@@ -34,6 +43,9 @@
         }
 
         private string _group;
+        /// <summary>
+        /// Учебная группа студента.
+        /// </summary>
         public string Group
         {
             get

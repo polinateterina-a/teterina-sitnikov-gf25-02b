@@ -1,11 +1,21 @@
 ﻿using System.Globalization;
 namespace Model;
-
+/// <summary>
+/// Модель для хранения и обработки списка студентов.
+/// </summary>
 public class StudentModel : IModel<Student>
 {
     private readonly List<Student> students = new();
+    /// <summary>
+    /// Событие, возникающее при добавлении или удалении студента.
+    /// </summary>
     public event DataChangedHandler? DataChanged;
-
+    /// <summary>
+    /// Проверяет, форматирует и добавляет нового студента в список.
+    /// </summary>
+    /// <param name="student">Объект студента с исходными данными.</param>
+    /// <param name="error">Сообщение об ошибке валидации или <see langword="null"/> при успехе.</param>
+    /// <returns><see langword="true"/>, если студент добавлен; иначе <see langword="false"/>.</returns>
     public bool Insert(Student student, out string? error)
     {
         if (string.IsNullOrWhiteSpace(student.Name))
@@ -53,7 +63,11 @@ public class StudentModel : IModel<Student>
         Notify();
         return true;
     }
-
+    /// <summary>
+    /// Удаляет студента из списка по указанному индексу.
+    /// </summary>
+    /// <param name="index">Индекс студента в списке.</param>
+    /// <returns><see langword="true"/>, если удаление выполнено; иначе <see langword="false"/>.</returns>
     public bool Delete(int index)
     {
         if (index < 0 || index >= students.Count) return false;

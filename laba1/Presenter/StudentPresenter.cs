@@ -4,12 +4,18 @@ using Model;
 using WinFormView;
 
 namespace Presenter;
-
+/// <summary>
+/// Презентер, связывающий модель <see cref="IModel{Student}"/> и представление <see cref="IView"/>.
+/// </summary>
 public class StudentPresenter
 {
     private readonly IModel<Student> model;
     private readonly IView view;
-
+    /// <summary>
+    /// Инициализирует презентер и подписывает модель и представление на события друг друга.
+    /// </summary>
+    /// <param name="model">Экземпляр модели студентов.</param>
+    /// <param name="view">Экземпляр представления.</param>
     public StudentPresenter(IModel<Student> model, IView view)
     {
         this.model = model;
